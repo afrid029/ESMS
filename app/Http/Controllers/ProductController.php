@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('productsf.index');
+        return view('productsf.index',compact('products'));
         //,compact('products'));
     }
 
@@ -55,7 +55,15 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        echo $product;
         return view('productsf.show',compact('product'));
+    }
+
+    public function showToOrder(Product $product)
+    {
+        echo $product;
+        $employees = User::all()->where('role','employee');
+        return view('ordersf.create',compact('product','employees'));
     }
 
     /**
@@ -81,7 +89,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'detail' => 'required',
-            'detail'=>'required'
+            'price'=>'required'
         ]);
 
         $product->update($request->all());
