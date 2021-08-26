@@ -14,7 +14,6 @@ Route::get('/', function () {
 });
 Route::post('/checklogin',[LoginController::class,'checklogin']);
 Route::get('/register',[LoginController::class,'register']);
-//Route::resource('User',UserController::class);
 Route::get('/logout',[LoginController::class,'logout']);
 
 

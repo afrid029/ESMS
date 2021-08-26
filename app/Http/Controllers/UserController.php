@@ -5,6 +5,7 @@ use Validator;
 use Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -50,13 +51,14 @@ class UserController extends Controller
         $user_data = array(
             'name'=> $request->get('name'),
             'email' => $request->get('email'),
-            'password' => $request->get('password'),
+            'password' => Hash::make($request->get('password')),
             'gender'=> $request->get('gender'),
             'mobile'=> $request->get('mobile'),
+            'role' => 'customer',
             'address'=> $request->get('address'),
         );
-        User::create($request->all());
-        return redirect()-> route('first.index')->with('success','Registered Successfully!');
+        User::create($user_data);
+        return redirect('/')->with('success','Registered Successfully!');
     }
 
     /**

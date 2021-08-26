@@ -17,7 +17,7 @@
                 <a class="nav-link active" aria-current="page" href="('dashboard.admin')">{{ Auth::user()->name}}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Products</a>
+                <a class="nav-link" href="{{route('products.index')}}">Products</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Employee</a>
