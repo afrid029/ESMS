@@ -17,13 +17,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-            DB::table('users')->insert(['name' => 'Abc',//Str::random(10),
-            'email' => 'Abc@gmail.com',//Str::random(10).'@gmail.com',
+        DB::table('users')->insert([
+            'name' => 'abcd',//Str::random(10),
+            'email' => 'abc@gmail.com',//Str::random(10).'@gmail.com',
+            'gender' => 'M',
+            'address' => 'test',
+            'mobile' => '123',
+            'role' => 'admin',
             'password' => Hash::make('test123'),
-            'remember_token' => Str::random(10), ]);
-            DB::table('users')->insert(['name' => 'Abcd',//Str::random(10),
-            'email' => 'Abcd@gmail.com',//Str::random(10).'@gmail.com',
-            'password' => Hash::make('test123'),
-            'remember_token' => Str::random(10), ]);
+            'remember_token' => Str::random(10),
+        ]);
+        // \App\Models\User::factory(10)->create();
     }
 }

@@ -3,20 +3,9 @@
 
 <div class="row">
  <div class="col-sm-8 offset-sm-2">
-
-        <!-- @if(isset(Auth::user()->email))
-        <script>window.location="success";</script>
-        @endif -->
-
-        @if ($message = Session::get('error'))
-        <div>
-            <button type="button" class="close" data-dismiss="alert">x</button>
-            <strong>{{ $message }}</strong>
-        </div>
-        @endif
-
         @if ($errors->any())
         <div class="alert alert-danger">
+          <strong>Whoops! </strong>There were some problems with your input.<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -24,7 +13,12 @@
             </ul>
         </div><br/>
         @endif
-
+        <!-- success alert message -->
+        @if ($message = Session::get('success'))
+	        <div class="alert alert-success">
+	            <p>{{ $message }}</p>
+	        </div>
+	      @endif
    <div>
       <form method="post" action="checklogin">
             @csrf
@@ -43,12 +37,12 @@
       </form>
     </div>
     <div class="row">
-    <form method="get" action="">
+    <form method="get" action="register">
           @csrf
           <div class="form-group">
             <button type="submit" class="btn btn-primary">Register Now!</button> 
           <div></br>
-      </form>
+    </form>
     </div>
  </div>
 </div>

@@ -2,25 +2,26 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/', function () {
-    //return(Auth::user()->email);
-    // Auth::logout();
-
-    // session()->invalidate();
-
-    // session()->regenerateToken();
-
-    // if(Auth::user()->email){
-    //     return 'loggedin';
-    // }else{
-    //     return 'logged out';
-    // }
-    //return "okk";
-    return view('admin.login');
+    return view('first.index');
 });
 Route::post('/checklogin',[LoginController::class,'checklogin']);
-Route::get('/success',[LoginController::class,'successlogin']);
+Route::get('/register',[LoginController::class,'register']);
+//Route::resource('User',UserController::class);
+Route::get('/logout',[LoginController::class,'logout']);
+
+
+Route::resources(['products'=> ProductController::class,
+'users'=> UserController::class,
+'orders'=> OrderController::class
+]);
+
+//Route::get('/placeorder/{product}',[ProductController::class,'showToOrder'])->name('products.order');
+//Route::get('/showmyorders',[OrderController::class,'showEmployeeOrder'])->name('myorder');
