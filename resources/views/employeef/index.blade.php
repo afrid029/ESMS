@@ -4,7 +4,7 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+                <a class="btn btn-success" href="{{ route('users.create') }}">Entroll New Employee</a>
             </div>
         </div>
     </div></br>
@@ -19,23 +19,23 @@
         <tr>
             <th>No</th>
             <th>Name</th>
-            <th>Details</th>
-            <th>Price</th>
+            <th>Email</th>
+            <th>Mobile</th>
             <th width="280px">Action</th>
         </tr>
         <?php $i=0 ?>
-        @foreach ($products as $product)
+        @foreach ($users as $user)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $product->name }}</td>
-            <td>{{ $product->detail }}</td>
-            <td>{{ $product->price }}</td>
+            <td>{{ $user->name }}</td>
+            <td>{{ $user->email }}</td>
+            <td>{{ $user->mobile }}</td>
             <td>
-                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                <form action="{{ route('users.destroy',$user->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
     
-                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')

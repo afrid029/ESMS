@@ -4,7 +4,7 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit a Product</h2>
+                <h2>Edit an Employee</h2>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
         </div>
     @endif
   
-    <form action="{{route('products.update',$product->id)}}" method="post">
+    <form action="{{route('users.update',$product->id)}}" method="post">
         @method('PUT')
         @csrf
          <div class="row">

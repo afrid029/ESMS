@@ -16,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return  "ok";
+        $users = User::latest()->where ('role','employee');
+        return view('employeef.index',compact('users'));
     }
 
     /**
@@ -26,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        
+        return view('employeef.create');
     }
 
     /**
@@ -40,25 +41,43 @@ class UserController extends Controller
          $request->validate(
             [
                 'name' =>'required',
-                'email'=>'required',
-                'gender'=>'required',
-                'address'=>'required',
-                'mobile'=>'required',
-                'password'=>'required',
+                'email'=>'required'
             ]
             );
 
-        $user_data = array(
+        $user = new User([
             'name'=> $request->get('name'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
             'gender'=> $request->get('gender'),
             'mobile'=> $request->get('mobile'),
-            'role' => 'customer',
+            'role' => 'employee',
             'address'=> $request->get('address'),
+          //  'remember_token'=> Str::random(10)
+            
+        ]);
+
+        $user->save();
+        $user_data = array(
+            'email' => $request->get('email'),
+            'password' => $request->get('password')
         );
-        User::create($user_data);
-        return redirect('/')->with('success','Registered Successfully!');
+        if($request->get('role') == 'customer')
+        {
+            if(Auth::attempt($user_data))
+            {
+                return view('dashboard.customer');
+            }
+            else
+            {
+                return redirect()->route('users.index');
+            }
+        }
+        else
+        {
+            //User::create($request->all());
+            return redirect()-> route('users.index')->with('success','Employee Added Successfully!');
+        }
     }
 
     /**
@@ -69,7 +88,7 @@ class UserController extends Controller
      */
     function show(User $user)
     {
-        //
+        return view('employeef.show',compact('user'));
     }
 
     /**
@@ -80,7 +99,7 @@ class UserController extends Controller
      */
     function edit(User $user)
     {
-        //
+        return view('employeef.edit',compact('user'));
     }
 
     /**
@@ -92,7 +111,15 @@ class UserController extends Controller
      */
     function update(Request $request, User $user)
     {
-        //
+        $request->validate(
+            [
+                'name' =>'required',
+                'email'=>'required'
+            ]);
+            $user-> update($request->all());
+            return redirect()-> route('users.index');
+         
+
     }
 
     /**
@@ -103,7 +130,8 @@ class UserController extends Controller
      */
     function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()-> route('users.index');
     }
 
 }
