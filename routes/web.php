@@ -22,5 +22,5 @@ Route::resources(['products'=> ProductController::class,
 'orders'=> OrderController::class
 ]);
 
-//Route::get('/placeorder/{product}',[ProductController::class,'showToOrder'])->name('products.order');
-//Route::get('/showmyorders',[OrderController::class,'showEmployeeOrder'])->name('myorder');
+Route::get('/placeorder/{product}',[ProductController::class,'showToOrder'])->name('products.order');
+Route::get('/showmyorders',[OrderController::class,'showEmployeeOrder'])->name('myorder');

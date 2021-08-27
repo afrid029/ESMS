@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Validator;
+use Auth;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -26,11 +28,6 @@ class ProductController extends Controller
     public function create()
     {
         return view('productsf.create');
-    }
-
-    public function order()
-    {
-        return view('ordersf.placeorder');
     }
     /**
      * Store a newly created resource in storage.
@@ -66,7 +63,7 @@ class ProductController extends Controller
     {
         echo $product;
         $employees = User::all()->where('role','employee');
-        return view('ordersf.create',compact('product','employees'));
+        return view('ordersf.placeorder',compact('product','employees'));
     }
 
     /**

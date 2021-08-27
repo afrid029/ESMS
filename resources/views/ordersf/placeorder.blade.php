@@ -13,8 +13,8 @@ Place Order
             </div><br>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Product Details :</strong>
-                    <input type="text" name="detail" value="{{$product->detail}}" class="form-control">
+                    <strong>Product Price :</strong>
+                    <input type="text" name="price" value="{{$product->price}}" class="form-control">
                 </div>
                 
             </div><br>

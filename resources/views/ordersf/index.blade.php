@@ -15,9 +15,10 @@
             <th>Price</th>
             <th width="280px">Actions</th>
         </tr>
+        <?php $i=0 ?>
         @foreach ($products as $product)
         <tr>
-            <td>ok</td>
+            <td>{{ ++$i }}</td>
             <td>{{ $product->name }}</td>
             <td>{{ $product->detail }}</td>
             <td>{{ $product->price }}</td>
