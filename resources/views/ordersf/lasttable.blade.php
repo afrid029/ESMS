@@ -25,23 +25,22 @@
             <th>Customer Mobile No</th>
             <th>Date</th>
         </tr>
-        <?php $i=0 ?>
-        @foreach ($orders as $order)
+
+        @foreach ($data as $order)
         <tr>
-            <td>{{ ++$i }}</td>
-            <td>{{ $product->name }}</td>
-            <td>{{ $product->detail }}</td>
-            <td>{{ $product->price }}</td>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->address }}</td>
-            <td>{{ $user->mobile }}</td>
+            <td>ok</td>
+            <td>{{ $order->prod_name }}</td>
+            <td>{{ $order->detail }}</td>
+            <td>{{ $order->name }}</td>
+
+            <td>{{ $order->name }}</td>
+            <td>{{ $order->address }}</td>
+            <td>{{ $order->mobile }}</td>
+            <td>{{ $order->created_at }}</td>
+            
            
         </tr>
         @endforeach
     </table>
-  
-    <div class="pagination justify-content-center">
-        
-    </div>
 
 @endsection

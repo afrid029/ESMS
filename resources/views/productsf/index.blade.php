@@ -46,9 +46,4 @@
         </tr>
         @endforeach
     </table>
-  
-    <div class="pagination justify-content-center">
-        
-    </div>
-
 @endsection

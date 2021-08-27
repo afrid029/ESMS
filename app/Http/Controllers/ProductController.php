@@ -28,6 +28,10 @@ class ProductController extends Controller
         return view('productsf.create');
     }
 
+    public function order()
+    {
+        return view('ordersf.placeorder');
+    }
     /**
      * Store a newly created resource in storage.
      *

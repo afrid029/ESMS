@@ -15,26 +15,16 @@
             <th>Price</th>
             <th width="280px">Actions</th>
         </tr>
-        <?php $i=0 ?>
-        @foreach ($orders as $order)
+        @foreach ($products as $product)
         <tr>
-            <td>{{ ++$i }}</td>
-            <td>{{ $order->name }}</td>
-            <td>{{ $order->detail }}</td>
-            <td>{{ $order->price }}</td>
+            <td>ok</td>
+            <td>{{ $product->name }}</td>
+            <td>{{ $product->detail }}</td>
+            <td>{{ $product->price }}</td>
             <td>
-                <form action="{{ route('orders.destroy',$order->id) }}" method="POST">
-    
-                    <a class="btn btn-success" href="#">Place Order</a>
-   
-                </form>
+                <a class="btn btn-success" href="{{ route('products.order',$product->id) }}">Place Order</a>
             </td>
         </tr>
         @endforeach
     </table>
-  
-    <div class="pagination justify-content-center">
-        
-    </div>
-
 @endsection

@@ -43,7 +43,7 @@
                     <a class="nav-link active" aria-current="page" href="('dashboard.employee')">{{ Auth::user()->name}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('orders.show')}}">My Orders</a>
+                    <a class="nav-link" href="{{route('orders.index')}}">My Orders</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/logout') }}">Logout</a>

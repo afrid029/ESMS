@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Validator;
+use Auth;
+use DB;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -14,8 +17,19 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
-        return view('ordersf.index',compact('orders'));
+        $products = Product::all();
+        return view('ordersf.index' , compact('products'));
+        
+        /*if(Auth::user()->role == 'employee')
+        {
+            $orders = Order::all();
+            return view('ordersf.lasttable',compact('orders'));
+        }
+        else
+        {
+            $orders = Order::all();
+            return view('ordersf.index',compact('orders'));
+        }*/
     }
 
     /**
@@ -36,7 +50,19 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Order::create($requset->all());
+        return redirect()->route('orders.index');
+    }
+    
+    public function showEmployeeOrder()
+    {
+        $data = DB::table('orders')
+        ->join('users','orders.employee_id','=','users.id')
+        ->join('products','products.id','=','orders.product_id')
+        ->select('users.name','users.address','users.mobile','products.name as prod_name',
+        'products.detail','orders.created_at')->where('orders.employee_id', Auth::user()->id)
+            ->get();
+        return view('ordersf.show',compact('data'));
     }
 
     /**
@@ -47,8 +73,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        $orders = Order::all();
-        return view('ordersf.lasttable',compact('orders'));
+       
     }
 
     /**

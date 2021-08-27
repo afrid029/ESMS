@@ -1,39 +1,35 @@
 @extends('dashboard.header')
 @section('content')
-   
-   <!-- error messages --> 
-   @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+Place Order
   
-    <form action="{{route('orders.update',$order->id)}}" method="post">
-        @method('PUT')
+    <form action="{{route('orders.store')}}" method="post">
         @csrf
          <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Product Name:</strong>
-                    <input type="text" name="name" value="{{$product->name}}" class="form-control" placeholder="Name">
+                    <input type="text" name="name" value="{{$product->name}}" class="form-control">
                 </div>
-            </div>
+            </div><br>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Employee Name:</strong>
-                    <input type="text" name="name" value="{{$user->name}}" class="form-control" placeholder="Name">
+                    <strong>Product Details :</strong>
+                    <input type="text" name="detail" value="{{$product->detail}}" class="form-control">
                 </div>
                 
-            </div>
+            </div><br>
+            <select name="employee_id">
+                @foreach($employees as $user)
+                {
+                    <option value="{{$user->id}}">{{$user->name}}</option>
+                }
+                @endforeach
+        
+            </select><br>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Price:</strong>
-                    <input type="text" name="price" value="{{$product->price}}" class="form-control" placeholder="Price">
+                    <input type="hidden" value="{{Auth::user()->id}}" name="customer_id" class="form-control" placeholder="Price">
+                    <input type="hidden" value="{{$product->id}}" name="product_id" class="form-control" placeholder="Price">
                 </div></br>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
