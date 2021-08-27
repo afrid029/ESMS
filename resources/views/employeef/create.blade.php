@@ -62,6 +62,8 @@
               <input type="password" class="form-control" name="password"/>
           </div></br>
         
+        <input type="hidden" name='role' value='employee'>
+
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Entroll</button>
         </div>

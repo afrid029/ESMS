@@ -13,31 +13,31 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name :</strong>
-                {{$product->name}}
+                {{$user->name}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Email :</strong>
-                {{$product->email}}
+                {{$user->email}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Gender :</strong>
-                {{$product->gender}}
+                {{$user->gender}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Address :</strong>
-                {{$product->address}}
+                {{$user->address}}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Mobile Number :</strong>
-                {{$product->mobile}}
+                {{$user->mobile}}
             </div>
         </div>
     </div>

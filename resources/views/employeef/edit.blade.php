@@ -21,29 +21,41 @@
         </div>
     @endif
   
-    <form action="{{route('users.update',$product->id)}}" method="post">
+    <form action="{{route('users.update',$user->id)}}" method="post">
         @method('PUT')
         @csrf
          <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="name" value="{{$product->name}}" class="form-control" placeholder="Name">
+                    <input type="text" name="name" value="{{$user->name}}" class="form-control">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Detail:</strong>
-                    <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail">{{$product->detail}}</textarea>
+                    <strong>Email:</strong>
+                    <input type="text" name="email" value="{{$user->email}}" class="form-control">
                 </div>
-                
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Price:</strong>
-                    <input type="text" name="price" value="{{$product->price}}" class="form-control" placeholder="Price">
-                </div></br>
+                    <strong>Gender:</strong>
+                    <input type="text" name="gender" value="{{$user->gender}}" class="form-control">
+                </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Address:</strong>
+                    <input type="text" name="address" value="{{$user->address}}" class="form-control">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Mobile No :</strong>
+                    <input type="text" name="mobile" value="{{$user->mobile}}" class="form-control">
+                </div>
+            </div>
+            
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
               <button type="submit" class="btn btn-primary">Update</button>
             </div>

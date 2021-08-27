@@ -46,7 +46,7 @@
                     <a class="nav-link" href="#">My Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="{{ url('/logout') }}">Logout</a>
                 </li>
             </ul>
             </div>
@@ -65,13 +65,10 @@
                     <a class="nav-link active" aria-current="page" href="('dashboard.customer')">{{ Auth::user()->name}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Products</a>
+                    <a class="nav-link" href="{{route('orders.index')}}">Place Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Place Order</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="{{ url('/logout') }}">Logout</a>
                 </li>
             </ul>
             </div>

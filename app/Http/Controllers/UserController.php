@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::latest()->where ('role','employee');
+        $users = User::all()->where ('role','employee');
         return view('employeef.index',compact('users'));
     }
 
@@ -51,9 +51,9 @@ class UserController extends Controller
             'password' => Hash::make($request->get('password')),
             'gender'=> $request->get('gender'),
             'mobile'=> $request->get('mobile'),
-            'role' => 'employee',
+            'role'=> $request->get('role'),
             'address'=> $request->get('address'),
-          //  'remember_token'=> Str::random(10)
+          // 'remember_token'=> Str::random(10)
             
         ]);
 
@@ -67,10 +67,6 @@ class UserController extends Controller
             if(Auth::attempt($user_data))
             {
                 return view('dashboard.customer');
-            }
-            else
-            {
-                return redirect()->route('users.index');
             }
         }
         else
