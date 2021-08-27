@@ -47,7 +47,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return "ok";
+        $orders = Order::all();
+        return view('ordersf.lasttable',compact('orders'));
     }
 
     /**
