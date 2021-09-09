@@ -6,9 +6,6 @@
         <div class="pull-left">
             <h2>Entroll a New Employee</h2>
         </div>
-        <div class="pull-right">
-           
-        </div>
     </div>
 </div>
 <!-- error messages --> 
@@ -37,7 +34,7 @@
                 <strong>Email :</strong>
                 <input type="text" name="email" class="form-control" >
             </div>
-     </br>
+        </br>
         <div class="form-group">
             <label for="gender"><strong>Gender</strong></label>
             <select id="gender" class="form-select" name="gender">
@@ -60,10 +57,11 @@
           <div class="form-group">
               <label for="password"><strong>Password:</strong></label>
               <input type="password" class="form-control" name="password"/>
-          </div></br>
+</br>
+          </div>
         
         <input type="hidden" name='role' value='employee'>
-
+      
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Entroll</button>
         </div>

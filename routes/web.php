@@ -15,12 +15,14 @@ Route::get('/', function () {
 Route::post('/checklogin',[LoginController::class,'checklogin']);
 Route::get('/register',[LoginController::class,'register']);
 Route::get('/logout',[LoginController::class,'logout']);
+Route::get('/dashboard',[LoginController::class,'dashboard']);
 
 
 Route::resources(['products'=> ProductController::class,
 'users'=> UserController::class,
-'orders'=> OrderController::class
+'orders'=> OrderController::class,
+'employees'=> EmployeeController::class
 ]);
-
-Route::get('/placeorder/{product}',[ProductController::class,'showToOrder'])->name('products.order');
-Route::get('/showmyorders',[OrderController::class,'showEmployeeOrder'])->name('myorder');
+//Route::resource('update_password','EmployeeController');
+//Route::get('/placeorder/{product}',[ProductController::class,'showToOrder'])->name('products.order');
+//Route::get('/showmyorders',[OrderController::class,'showEmployeeOrder'])->name('myorder');

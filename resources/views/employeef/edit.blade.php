@@ -53,7 +53,7 @@
                 <div class="form-group">
                     <strong>Mobile No :</strong>
                     <input type="text" name="mobile" value="{{$user->mobile}}" class="form-control">
-                </div>
+                </div></br>
             </div>
             
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

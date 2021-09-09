@@ -19,13 +19,13 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'abcd',//Str::random(10),
-            'email' => 'abc@gmail.com',//Str::random(10).'@gmail.com',
-            'gender' => 'M',
-            'address' => 'test',
-            'mobile' => '123',
+            'name' => 'Pavithra',//Str::random(10),
+            'email' => 'pavithra@gmail.com',//Str::random(10).'@gmail.com',
+            'gender' => 'F',
+            'address' => 'Badulla',
+            'mobile' => '0779255222',
             'role' => 'admin',
-            'password' => Hash::make('test123'),
+            'password' => Hash::make('Pavithra@123'),
             'remember_token' => Str::random(10),
         ]);
         // \App\Models\User::factory(10)->create();

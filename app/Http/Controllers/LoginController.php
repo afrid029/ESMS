@@ -16,7 +16,14 @@ class LoginController extends Controller
         //Validation
         $this->validate($request, [
             'email' => 'required|email',
-            'password' => 'required|alphaNum|min:5']);
+            'password' => 'required|min:8|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|regex:/[!@#$%&*?]/'],
+             
+            [
+                'password.min' => 'Password minimum length is 08',
+                'password.regex' => 'Password should contain at least one uppercase letter, one lowercase letter,
+                one digit, one special character'
+            ]
+        );
 
         //Authentication
         $user_data = array(
@@ -51,6 +58,20 @@ class LoginController extends Controller
     function register()
     {
         return view('first.register');
+    }
+    function dashboard(){
+        if(Auth::user()->role =='admin')
+        {
+            return view('dashboard.admin');
+        }
+        else if(Auth::user()->role =='employee')
+        {
+            return view('dashboard.employee');
+        }
+        else if(Auth::user()->role =='customer')
+        {
+            return view('dashboard.customer');
+        }
     }
 }
 

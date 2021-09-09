@@ -17,19 +17,19 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('ordersf.index' , compact('products'));
+        // $products = Product::all();
+        // return view('ordersf.index' , compact('products'));
         
-        /*if(Auth::user()->role == 'employee')
+        if(Auth::user()->role == 'employee')
         {
-            $orders = Order::all();
+            $orders = Order::all()->where('employee_id',Auth::user()->id);
             return view('ordersf.lasttable',compact('orders'));
         }
         else
         {
-            $orders = Order::all();
-            return view('ordersf.index',compact('orders'));
-        }*/
+            $products = Product::all();
+            return view('ordersf.index',compact('products'));
+        }
     }
 
     /**
@@ -50,7 +50,21 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        Order::create($requset->all());
+       
+        $order = new Order([
+            'product_id'=>$request->get('product_id'),
+            'employee_id' => $request->get('employee_id'),
+            'customer_id' => $request->get('customer_id'),
+            'customer_name'=>Auth::user()->name,
+            'product_name'=>$request->get('product_name'),
+            'product_detail'=>$request->get('product_detail'),
+            'price' => $request->get('price'),
+            'customer_address'=> Auth::user()->address,
+            'customer_mobile' => Auth::user()->mobile,
+            'date' => date("Y-m-d")
+
+        ]);
+        $order->save();
         return redirect()->route('orders.index');
     }
     

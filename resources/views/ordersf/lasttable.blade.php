@@ -25,18 +25,18 @@
             <th>Customer Mobile No</th>
             <th>Date</th>
         </tr>
-
-        @foreach ($data as $order)
+        <?php $i = 1 ?>
+        @foreach ($orders as $order)
         <tr>
-            <td>ok</td>
-            <td>{{ $order->prod_name }}</td>
-            <td>{{ $order->detail }}</td>
-            <td>{{ $order->name }}</td>
+            <td>{{$i++}}</td>
+            <td>{{ $order->product_name }}</td>
+            <td>{{ $order->product_detail }}</td>
+            <td>{{ $order->price }}</td>
 
-            <td>{{ $order->name }}</td>
-            <td>{{ $order->address }}</td>
-            <td>{{ $order->mobile }}</td>
-            <td>{{ $order->created_at }}</td>
+            <td>{{ $order->customer_name }}</td>
+            <td>{{ $order->customer_address }}</td>
+            <td>{{ $order->customer_mobile }}</td>
+            <td>{{ $order->date }}</td>
             
            
         </tr>

@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Validator;
-use Auth;
+
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Auth;
 class ProductController extends Controller
 {
     /**
@@ -28,6 +27,15 @@ class ProductController extends Controller
     public function create()
     {
         return view('productsf.create');
+    }
+/** 
+    * @param  \App\Models\Product  $product
+    * @return \Illuminate\Http\Response
+*/
+    public function order(Product $product)
+    {
+        return "ok";
+        //return view('ordersf.placeorder');
     }
     /**
      * Store a newly created resource in storage.
@@ -55,15 +63,21 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        echo $product;
-        return view('productsf.show',compact('product'));
+        if(Auth::user()->role == "customer"){
+            $employees = User::all()->where('role','employee');
+            return view('ordersf.placeorder',compact('product','employees'));
+        }else{
+            //echo $product;
+            return view('productsf.show',compact('product'));
+        }
+       
     }
 
     public function showToOrder(Product $product)
     {
         echo $product;
         $employees = User::all()->where('role','employee');
-        return view('ordersf.placeorder',compact('product','employees'));
+        return view('ordersf.create',compact('product','employees'));
     }
 
     /**
