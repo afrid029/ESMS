@@ -43,7 +43,7 @@
                     <a class="nav-link active" aria-current="page" href="dashboard">{{ Auth::user()->name}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('employee.edit')}}">Reset Password</a>
+                    <a class="nav-link" href="{{url('employees/'. Auth::user()->id .'/edit')}}">Reset Password</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('orders.index')}}">My Orders</a>

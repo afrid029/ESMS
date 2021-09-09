@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Employee;
 
+use Auth;
+
 class EmployeeController extends Controller
 {
     /**
@@ -57,7 +59,9 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        $users = admin::find(Auth::user()->id);
+       
+        $users = User::find(Auth::user()->id);
+        //return $users;
         return view('updatepassword',compact('users'));
     }
 
@@ -82,9 +86,9 @@ class EmployeeController extends Controller
            {
                 if (!\Hash::check($request->newpassword , $hashedPassword)) 
                 {
-                    $users =admin::find(Auth::user()->id);
+                    $users =User::find(Auth::user()->id);
                     $users->password = bcrypt($request->newpassword);
-                    admin::where( 'id' , Auth::user()->id)->update( array( 'password' =>  $users->password));
+                    User::where( 'id' , Auth::user()->id)->update( array( 'password' =>  $users->password));
      
                     session()->flash('message','password updated successfully');
                     return redirect()->back();

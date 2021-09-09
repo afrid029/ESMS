@@ -15,8 +15,13 @@
         <p class="alert alert-danger">{{$error}}</p>
       @endforeach
     @endif  
+
+    @if($msg=session()->get('message'))
+    <p class="alert alert-danger">{{$msg}}</p>
+
+    @endif
     
-    <form action="{{ route('update-password.update',[$users->id,$users->slug]) }}" method="post">
+    <form action="{{ route('employees.update',[$users->id,$users->slug]) }}" method="post">
         @csrf
         @method('PATCH')
 
