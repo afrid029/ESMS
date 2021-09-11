@@ -24,6 +24,7 @@
             <th>Customer Address</th>
             <th>Customer Mobile No</th>
             <th>Date</th>
+            <th>Delivered</th>
         </tr>
         <?php $i = 1 ?>
         @foreach ($orders as $order)
@@ -37,7 +38,11 @@
             <td>{{ $order->customer_address }}</td>
             <td>{{ $order->customer_mobile }}</td>
             <td>{{ $order->date }}</td>
-            
+            <td>
+            <form action="#" method="POST">
+                <button type="submit" class="btn btn-success">Yes</button>
+            </form>
+            </td>
            
         </tr>
         @endforeach

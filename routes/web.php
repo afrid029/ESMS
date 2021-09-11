@@ -24,6 +24,5 @@ Route::resources(['products'=> ProductController::class,
 'orders'=> OrderController::class,
 'employees'=> EmployeeController::class
 ]);
-//Route::resource('update_password','EmployeeController');
-//Route::get('/placeorder/{product}',[ProductController::class,'showToOrder'])->name('products.order');
-//Route::get('/showmyorders',[OrderController::class,'showEmployeeOrder'])->name('myorder');
+ Route::post('/myaction',[OrderController::class,'myaction'])->name('myaction');
+ Route::get('/customerorders',[OrderController::class,'myorder']);

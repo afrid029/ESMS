@@ -71,6 +71,9 @@
                     <a class="nav-link" href="{{route('orders.index')}}">Place Orders</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="customerorders">My Orders</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ url('/logout') }}">Logout</a>
                 </li>
             </ul>

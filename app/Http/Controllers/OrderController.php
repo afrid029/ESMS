@@ -123,4 +123,25 @@ class OrderController extends Controller
     {
         //
     }
+    public function myaction(Request $request)
+    {
+        $data = Order::find($request->raw_id);
+        $data->product_name = $data['product_name'];
+        $data->product_detail = $data['product_detail'];
+        $data->price = $data['price'];
+        $data->customer_name = $data['customer_name'];
+        $data->customer_address = $data['customer_address'];
+        $data->customer_mobile = $data['customer_mobile'];
+        $data->order_status = $request->action;
+        $data->save();
+        return redirect('customerorders');
+    }
+    public function myorder()
+    {
+        $products= DB::table('orders')
+        ->join('users','users.id',"=",'orders.employee_id')
+        ->get();
+        $orders = Order::all();
+        return view('ordersf.myorders',compact('products','orders'));
+    }
 }

@@ -43,11 +43,11 @@
                 <div class="form-group">
                     <strong>Confirm New Password :</strong>
                     <input type="password" id="first-name"  class="form-control" name="password_confirmation"> 
-                </div>
+                </div></br>
             </div>
             
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Change</button>
+                <button type="submit" class="btn btn-success">Change</button>
             </div>   
     </form>    
   
