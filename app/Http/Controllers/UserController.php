@@ -41,7 +41,16 @@ class UserController extends Controller
          $request->validate(
             [
                 'name' =>'required',
-                'email'=>'required'
+                'email'=>'required',
+                'password' => 'required|min:8|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|regex:/[!@#$%&*?]/',
+                'gender' => 'required',
+                'mobile' => 'required',
+                'address' => 'required'
+            ],
+            [
+                'password.min' => 'Password minimum length is 08',
+                'password.regex' => 'Password should contain at least one uppercase letter, one lowercase letter,
+                one digit, one special character'
             ]
             );
 

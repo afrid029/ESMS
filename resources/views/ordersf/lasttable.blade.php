@@ -38,11 +38,22 @@
             <td>{{ $order->customer_address }}</td>
             <td>{{ $order->customer_mobile }}</td>
             <td>{{ $order->date }}</td>
+            @if($order->order_status == "Delivered")
+                <td>Delivered</td>
+                @else
+                    @if($order->order_status == "cancelled")
+                    <td>Cancelled</td>
+                    @else
             <td>
-            <form action="#" method="POST">
+            <form action="{{ route('myaction')}}" method="POST">
+                @csrf 
+                <input type="hidden" name="action" value="Delivered">
+                <input type="hidden" name="raw_id" value="{{$order->id}}">
                 <button type="submit" class="btn btn-success">Yes</button>
             </form>
             </td>
+            @endif
+            @endif
            
         </tr>
         @endforeach

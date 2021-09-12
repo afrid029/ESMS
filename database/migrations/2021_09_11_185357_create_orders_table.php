@@ -25,11 +25,12 @@ class CreateOrdersTable extends Migration
             $table->string('customer_address');
             $table->string('customer_mobile');
             $table->date('date');
+            $table->string('order_status')->nullable();
             $table->foreign('employee_id')->references('id')->on('users');
             $table->foreign('customer_id')->references('id')->on('users');
             $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
-            $table->string('order_status')->nullable();
+            
         });
     }
 

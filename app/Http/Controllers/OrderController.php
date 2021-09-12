@@ -22,7 +22,7 @@ class OrderController extends Controller
         
         if(Auth::user()->role == 'employee')
         {
-            $orders = Order::all()->where('employee_id',Auth::user()->id);
+            $orders = DB::table('orders')->where('employee_id',Auth::user()->id)->orderBy('order_status','desc')->get();
             return view('ordersf.lasttable',compact('orders'));
         }
         else
@@ -61,7 +61,8 @@ class OrderController extends Controller
             'price' => $request->get('price'),
             'customer_address'=> Auth::user()->address,
             'customer_mobile' => Auth::user()->mobile,
-            'date' => date("Y-m-d")
+            'date' => date("Y-m-d"),
+            'order_status' =>'New'
 
         ]);
         $order->save();
@@ -125,23 +126,27 @@ class OrderController extends Controller
     }
     public function myaction(Request $request)
     {
-        $data = Order::find($request->raw_id);
-        $data->product_name = $data['product_name'];
-        $data->product_detail = $data['product_detail'];
-        $data->price = $data['price'];
-        $data->customer_name = $data['customer_name'];
-        $data->customer_address = $data['customer_address'];
-        $data->customer_mobile = $data['customer_mobile'];
-        $data->order_status = $request->action;
-        $data->save();
-        return redirect('customerorders');
+        //return $request->raw_id;
+        Order::where('id',$request->raw_id)->update(array('order_status'=>$request->action));
+
+        if($request->action == 'Delivered'){
+            session()->flash('success','Order Cancelled');
+            return redirect(route('orders.index'));
+        }else{
+            session()->flash('success','Order Cancelled');
+            return redirect('customerorders');
+        }
+       
     }
     public function myorder()
     {
         $products= DB::table('orders')
         ->join('users','users.id',"=",'orders.employee_id')
+        ->select('orders.*','users.name')
+        ->orderBy('order_status','desc')
         ->get();
-        $orders = Order::all();
-        return view('ordersf.myorders',compact('products','orders'));
+        //return $products;
+        // $orders = Order::all();
+        return view('ordersf.myorders',compact('products'));
     }
 }
